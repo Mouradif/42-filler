@@ -6,11 +6,11 @@
 #    By: mkejji <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/28 19:33:22 by mkejji            #+#    #+#              #
-#    Updated: 2016/09/28 19:44:08 by mkejji           ###   ########.fr        #
+#    Updated: 2016/09/29 09:33:32 by mkejji           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = mkeji.filler
+NAME = mkejji.filler
 
 SRC = src/main.c
 
