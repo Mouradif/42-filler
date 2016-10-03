@@ -16,6 +16,8 @@ SRC = src/main.c
 
 CFLAGS = -Wall -Wextra -Werror
 
+CC = gcc
+
 all:
 	make -C libft
 	$(CC) -Iinc -Llibft -lft $(CFLAGS) $(SRC) -o $(NAME)
