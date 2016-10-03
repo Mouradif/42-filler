@@ -11,11 +11,17 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <fcntl.h>
 #include "libft.h"
 #include "filler.h"
 
 int	main(void)
 {
-	ft_putstr("Empty project\n");
+	char	buf[1024];
+	int		rd;
+	int fd = open("logfile1", O_CREAT | O_RDWR);
+	while((rd = read(1, buf, 1024)) > 0)
+		write(fd, buf, rd);
+	close(fd);
 	return (1);
 }
