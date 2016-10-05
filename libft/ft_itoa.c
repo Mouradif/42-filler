@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static unsigned int	count_digits(int n)
+static t_uint	count_digits(int n)
 {
 	if (n < 0)
 		return (1 + count_digits(-n));
@@ -25,11 +25,11 @@ static unsigned int	count_digits(int n)
 	}
 }
 
-char				*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
-	char			*a;
-	unsigned int	digits;
-	unsigned int	i;
+	char	*a;
+	t_uint	digits;
+	t_uint	i;
 
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));

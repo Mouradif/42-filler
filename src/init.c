@@ -24,7 +24,10 @@ t_map	*newmap(int w, int h)
 	m->height = h;
 	m->grid = (char**)malloc(h * sizeof(char*) + 1);
 	while (i < h)
-		m->grid[i++] = ft_strnew(w);
+	{
+		m->grid[i] = ft_strnew(w);
+		i++;
+	}
 	m->grid[i] = NULL;
 	return (m);
 }

@@ -25,18 +25,18 @@ t_game	*init(void)
 
 int		read_map(t_game *g)
 {
-
 	size_t	i;
 	size_t	j;
 	char	*line;
-	int		gnl;
 
 	j = 0;
-	while((gnl = ft_get_next_line(1, &line)) > 0 && j < g->map->height)
+	while((ft_get_next_line(1, &line)) > 0 && j < g->map->height)
 	{
 		i = 0;
 		while (line[i] && line[i] != ' ')
 			i++;
+		if (ft_strlen(line + i) != g->map->width)
+			return ((int)freedie(&g, "Bad map info"));
 		while(line[i] && i < g->map->width)
 		{
 			g->map->grid[j][i] = (char) ft_toupper(line[i]);

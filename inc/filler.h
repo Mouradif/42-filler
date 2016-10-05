@@ -35,5 +35,6 @@ int 			get_map_info(t_game *g, char *line);
 t_game			*newgame(void);
 t_map			*newmap(int w, int h);
 void			*freedie(t_game **g, char *err);
+void			print_map(t_game *g);
 
 #endif

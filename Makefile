@@ -12,7 +12,12 @@
 
 NAME = mkejji.filler
 
-SRC = src/main.c	src/parse.c		src/parseutils.c	src/init.c	src/utils.c
+SRC =	src/main.c \
+		src/parse.c	\
+		src/parseutils.c \
+		src/init.c \
+		src/utils.c \
+		src/test.c
 
 CFLAGS = -Wall -Wextra -Werror
 

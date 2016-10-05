@@ -17,5 +17,13 @@
 
 int	main(void)
 {
-	init();
+	t_game	*g;
+
+	g = init();
+	if (g == NULL)
+		return (1);
+	read_map(g);
+	if (g == NULL)
+		return (1);
+	print_map(g);
 }
