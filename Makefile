@@ -12,7 +12,7 @@
 
 NAME = mkejji.filler
 
-SRC = src/main.c
+SRC = src/main.c	src/parse.c		src/parseutils.c	src/init.c	src/utils.c
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -21,3 +21,6 @@ CC = gcc
 all:
 	make -C libft
 	$(CC) -Iinc -Llibft -lft $(CFLAGS) $(SRC) -o $(NAME)
+
+clean:
+	rm $(NAME)

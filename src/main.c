@@ -17,11 +17,5 @@
 
 int	main(void)
 {
-	char	buf[1024];
-	int		rd;
-	int fd = open("logfile1", O_CREAT | O_RDWR);
-	while((rd = read(1, buf, 1024)) > 0)
-		write(fd, buf, rd);
-	close(fd);
-	return (1);
+	init();
 }

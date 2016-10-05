@@ -9,19 +9,30 @@ t_game	*init(void)
 	int		read;
 	char	*line;
 
-	g = (t_game*)malloc(sizeof(t_game));
+	line = NULL;
+	read = ft_get_next_line(1, &line);
+	if (!read)
+		return ((t_game*)freedie(NULL, "STDIN said nothing"));
+	g = newgame();
+	if (!get_player_info(g, line))
+		return ((t_game*)freedie(&g, "Bad player info"));
+	ft_strdel(&line);
+	read = ft_get_next_line(1, &line);
+	if (!get_map_info(g, line))
+		return ((t_game*)freedie(&g, "Bad map info"));
+	return (g);
 }
 
 int		read_map(t_game *g)
 {
 
-	int		i;
-	int		j;
-char	*line;
-	int		len;
+	size_t	i;
+	size_t	j;
+	char	*line;
+	int		gnl;
 
 	j = 0;
-	while((len = ft_get_next_line(1, &line)) > 0 && j < g->height)
+	while((gnl = ft_get_next_line(1, &line)) > 0 && j < g->map->height)
 	{
 		i = 0;
 		while (line[i] && line[i] != ' ')
@@ -32,9 +43,10 @@ char	*line;
 			i++;
 		}
 		if (i != g->map->width)
-			return (ft_freedie(&g, "Bad map info"));
+			return ((int)freedie(&g, "Bad map info"));
 		j++;
 	}
 	if (j != g->map->height)
-		return (ft_freedie(&g, "Bad map info"));
+		return ((int)freedie(&g, "Bad map info"));
+	return (1);
 }

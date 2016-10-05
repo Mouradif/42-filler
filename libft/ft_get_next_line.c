@@ -29,7 +29,7 @@ static int	extract_next_line(char **rest, char **line, int offset)
 	return (1);
 }
 
-int			get_next_line(const int fd, char **line)
+int			ft_get_next_line(const int fd, char **line)
 {
 	static char	*rest = NULL;
 	char		buf[BUFF_SIZE + 2];
@@ -52,5 +52,5 @@ int			get_next_line(const int fd, char **line)
 		return (-1);
 	buf[len] = (len == 0) ? '\3' : '\0';
 	ft_stradd(&rest, buf);
-	return (get_next_line(fd, line));
+	return (ft_get_next_line(fd, line));
 }
