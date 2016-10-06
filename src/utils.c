@@ -14,13 +14,33 @@
 #include "libft.h"
 #include <stdlib.h>
 
+void	*freemap(t_map **m)
+{
+	size_t	j;
+
+	if (*m == NULL)
+		return (NULL);
+	j = 0;
+	while (j < (*m)->height)
+		free((*m)->grid[j++]);
+	free(*m);
+	return (*m = NULL);
+}
+
+void	*freegame(t_game **g)
+{
+	if (*g == NULL)
+		return (NULL);
+	if ((*g)->map != NULL)
+		freemap(&((*g)->map));
+	free(*g);
+	return (*g = NULL);
+}
+
 void	*freedie(t_game **g, char *s)
 {
 	if (g != NULL)
-	{
-		free(*g);
-		*g = NULL;
-	}
+		freegame(g);
 	ft_putendl_fd(s, 2);
 	return (NULL);
 }

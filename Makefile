@@ -17,15 +17,21 @@ SRC =	src/main.c \
 		src/parseutils.c \
 		src/init.c \
 		src/utils.c \
+		src/play.c \
 		src/test.c
 
 CFLAGS = -Wall -Wextra -Werror
 
 CC = gcc
 
-all:
-	make -C libft
+all: libft
 	$(CC) -Iinc -Llibft -lft $(CFLAGS) $(SRC) -o $(NAME)
+
+termux: libft
+	$(CC) $(CFLAGS) -Iinc $(SRC) libft/libft.a -o $(NAME)
+
+libft:
+	make -C libft
 
 clean:
 	rm $(NAME)

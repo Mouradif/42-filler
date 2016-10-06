@@ -41,5 +41,8 @@ void			*freedie(t_game **g, char *err);
 void			print_map(t_game *g);
 int				valid_map_line(t_game *g, char **line);
 int				valid_piece_line(t_game *g, char *line);
+int				print_best_move(t_game *g);
+void			*freegame(t_game **g);
+void			*freemap(t_map **m);
 
 #endif
