@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parseutils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkejji <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/10/06 16:47:49 by mkejji            #+#    #+#             */
+/*   Updated: 2016/10/06 16:49:31 by mkejji           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "filler.h"
 #include "libft.h"
 #include <stdlib.h>
@@ -7,7 +19,7 @@ int	get_player_info(t_game *g, char *line)
 {
 	char	**words;
 
- 	if (ft_strlen(line) < 12 || ft_countwords(line, ' ') < 3)
+	if (ft_strlen(line) < 12 || ft_countwords(line, ' ') < 3)
 		return (0);
 	words = ft_strsplit(line, ' ');
 	if (ft_strcmp(words[0], "$$$") != 0)
@@ -22,7 +34,7 @@ int	get_player_info(t_game *g, char *line)
 	return (1);
 }
 
-int get_map_info(t_game *g, char *line)
+int	get_map_info(t_game *g, char *line)
 {
 	char	**words;
 	int		w;

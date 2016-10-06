@@ -6,7 +6,7 @@
 /*   By: mkejji <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/06 14:56:54 by mkejji            #+#    #+#             */
-/*   Updated: 2016/10/06 16:24:26 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/10/06 16:49:09 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ int		read_map(t_game **g)
 	if (!get_map_info(*g, line))
 		return ((int)freedie(g, "Bad map info (couldn't get map info)"));
 	ft_get_next_line(STDIN_FILENO, &line);
-	while((ft_get_next_line(STDIN_FILENO, &line)) > 0 && j < (*g)->map->height)
+	while ((ft_get_next_line(STDIN_FILENO, &line)) > 0 && j < (*g)->map->height)
 	{
 		i = 0;
 		if (!valid_line(*g, &line))
-			return ((int)freedie(g, "Bad map info (unexpected char or length)"));
-		while(line[i] && i < (*g)->map->width)
+			return ((int)freedie(g, "Bad map info (unexpected char/length)"));
+		while (line[i] && i < (*g)->map->width)
 		{
-			(*g)->map->grid[j][i] = (char) ft_toupper(line[i]);
+			(*g)->map->grid[j][i] = (char)ft_toupper(line[i]);
 			i++;
 		}
 		j++;

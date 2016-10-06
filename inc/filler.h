@@ -6,7 +6,7 @@
 /*   By: mkejji <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 19:37:50 by mkejji            #+#    #+#             */
-/*   Updated: 2016/10/06 16:24:14 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/10/06 16:50:02 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct	s_game
 t_game			*init(void);
 int				read_map(t_game **g);
 int				get_player_info(t_game *g, char *line);
-int 			get_map_info(t_game *g, char *line);
+int				get_map_info(t_game *g, char *line);
 t_game			*newgame(void);
 t_map			*newmap(int w, int h);
 void			*freedie(t_game **g, char *err);
