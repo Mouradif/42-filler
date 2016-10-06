@@ -1,0 +1,5 @@
+resources/
+mkejji.filler
+*.o
+*.a
+*.swp

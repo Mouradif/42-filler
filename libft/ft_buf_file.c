@@ -12,6 +12,9 @@
 
 #include <fcntl.h>
 #include "libft.h"
+#ifndef BUFF_SIZE
+# define BUFF_SIZE 4096
+#endif
 
 t_buf	*ft_buf_fd(int fd)
 {

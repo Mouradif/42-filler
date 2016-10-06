@@ -30,7 +30,7 @@ FT_SRC = \
 
 SRC := $(addprefix ft_, $(FT_SRC)) $(addprefix btree_, $(BTREE_SRC))
 
-CC ?= gcc
+CC = gcc
 
 FLAGS = -Wall -Werror -Wextra
 

@@ -6,7 +6,7 @@
 /*   By: mkejji <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 19:36:30 by mkejji            #+#    #+#             */
-/*   Updated: 2016/09/29 09:34:58 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/10/06 14:16:58 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@
 
 int	main(void)
 {
-	int		fd;
-	int		n;
-	char	buf[1024];
+	t_game	*g;
 
-	fd = open("mkejji.trace", O_CREAT | O_WRONLY);
-	while ((n = read(0, buf, 1024)))
-		write(fd, buf, n);
-	return (1);
+	g = init();
+	if (g == NULL)
+		return (1);
+	read_map(g);
+	if (g == NULL)
+		return (1);
+	print_map(g);
 }

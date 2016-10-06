@@ -6,34 +6,19 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 14:02:57 by mkejji            #+#    #+#             */
-/*   Updated: 2016/08/22 09:07:44 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/08/06 22:02:01 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# ifndef BUFF_SIZE
-#  define BUFF_SIZE 4096
-# endif
 # include <string.h>
 
 /*
-** Typedefs
+** Typedefs & Structs
 */
 
-typedef struct	s_buf
-{
-	char	*buf;
-	size_t	size;
-	size_t	cap;
-}				t_buf;
-
-typedef	struct	s_list
-{
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-}				t_list;
+# include "ft_struct.h"
 
 /*
 ** Put
@@ -113,6 +98,10 @@ int				ft_pow(int n, size_t e);
 unsigned int	ft_abs(int n);
 int				ft_atoi(const char *str);
 char			*ft_itoa(int n);
+char			*ft_itoa_u(t_uint n);
+char			*ft_itoa_l(long long n);
+char			*ft_itoa_base(int n, int b);
+char			*ft_itoa_base_u(int n, int b);
 
 /*
 ** What is this ?
@@ -158,8 +147,6 @@ void			ft_bufdel(t_buf **b);
 t_buf			*ft_bufnew(size_t size);
 t_buf			*ft_bufdup(char *str);
 t_buf			*ft_bufcat(t_buf *a, t_buf *b);
-t_buf			*ft_buf_file(char *filename);
-t_buf			*ft_buf_fd(int fd);
 
 /*
 ** Utils
