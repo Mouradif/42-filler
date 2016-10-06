@@ -6,7 +6,7 @@
 /*   By: mkejji <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/06 14:56:54 by mkejji            #+#    #+#             */
-/*   Updated: 2016/10/06 17:59:54 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/10/06 18:05:41 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_game	*init(void)
 	char	*line;
 
 	line = NULL;
-	if (!(ft_get_next_line(STDIN_FILENO, &line)))
+	if (!(ft_get_next_line(0, &line)))
 		return ((t_game*)freedie(NULL, "STDIN said nothing"));
 	g = newgame();
 	if (!get_player_info(g, line))
@@ -38,12 +38,12 @@ int		read_map(t_game **g)
 	char	*line;
 
 	j = 0;
-	if (!(ft_get_next_line(STDIN_FILENO, &line)))
+	if (!(ft_get_next_line(0, &line)))
 		return ((int)freedie(g, "Bad map info (no map input)"));
 	if (!get_map_info(*g, line))
 		return ((int)freedie(g, "Bad map info (couldn't get map info)"));
-	ft_get_next_line(STDIN_FILENO, &line);
-	while (j < (*g)->map->height && (ft_get_next_line(STDIN_FILENO, &line)) > 0)
+	ft_get_next_line(0, &line);
+	while (j < (*g)->map->height && (ft_get_next_line(0, &line)) > 0)
 	{
 		i = 0;
 		if (!valid_map_line(*g, &line))
@@ -67,11 +67,11 @@ int		read_piece(t_game **g)
 	char	*line;
 
 	j = 0;
-	if (!(ft_get_next_line(STDIN_FILENO, &line)))
+	if (!(ft_get_next_line(0, &line)))
 		return ((int)freedie(g, "Bad piece info (no piece input)"));
 	if (!get_piece_info(*g, line))
 		return ((int)freedie(g, "Bad piece info (couldn't get piece info)"));
-	while ((ft_get_next_line(STDIN_FILENO, &line)) > 0 && j < (*g)->piece->height)
+	while ((ft_get_next_line(0, &line)) > 0 && j < (*g)->piece->height)
 	{
 		i = 0;
 		if (!valid_piece_line(*g, line))
