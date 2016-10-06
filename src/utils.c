@@ -4,7 +4,11 @@
 
 void	*freedie(t_game **g, char *s)
 {
-	free(*g);
+	if (g != NULL)
+	{
+		free(*g);
+		*g = NULL;
+	}
 	ft_putendl(s);
 	return (NULL);
 }

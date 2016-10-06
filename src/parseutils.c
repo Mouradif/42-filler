@@ -1,6 +1,7 @@
 #include "filler.h"
 #include "libft.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 int	get_player_info(t_game *g, char *line)
 {
@@ -37,5 +38,18 @@ int get_map_info(t_game *g, char *line)
 	if (w == 0 || h == 0)
 		return (0);
 	g->map = newmap(w, h);
+	return (1);
+}
+
+int	valid_line(t_game *g, char **line)
+{
+	while (**line && **line != ' ')
+		(*line)++;
+	if (**line == ' ')
+		(*line)++;
+	else
+		return (0);
+	if (ft_strlen(*line) != g->map->width)
+		return (0);
 	return (1);
 }

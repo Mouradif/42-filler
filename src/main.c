@@ -6,7 +6,7 @@
 /*   By: mkejji <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 19:36:30 by mkejji            #+#    #+#             */
-/*   Updated: 2016/10/06 14:16:58 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/10/06 16:24:50 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <fcntl.h>
 #include "libft.h"
 #include "filler.h"
+#include <stdio.h>
 
 int	main(void)
 {
@@ -22,8 +23,6 @@ int	main(void)
 	g = init();
 	if (g == NULL)
 		return (1);
-	read_map(g);
-	if (g == NULL)
-		return (1);
 	print_map(g);
+	return (0);
 }
