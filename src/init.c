@@ -6,7 +6,7 @@
 /*   By: mkejji <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/06 16:47:43 by mkejji            #+#    #+#             */
-/*   Updated: 2016/10/06 16:47:45 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/10/06 16:57:12 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_game	*newgame(void)
 	g->player = 0;
 	g->turn = 0;
 	g->map = NULL;
+	g->piece = NULL;
 	return (g);
 }
 

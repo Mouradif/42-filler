@@ -6,7 +6,7 @@
 /*   By: mkejji <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 19:37:50 by mkejji            #+#    #+#             */
-/*   Updated: 2016/10/06 16:50:02 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/10/06 16:56:38 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct	s_game
 	char	player;
 	size_t	turn;
 	t_map	*map;
+	t_map	*piece;
 }				t_game;
 
 t_game			*init(void);

@@ -6,7 +6,7 @@
 /*   By: mkejji <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/06 14:56:54 by mkejji            #+#    #+#             */
-/*   Updated: 2016/10/06 16:49:09 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/10/06 16:59:10 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,17 @@ int		read_map(t_game **g)
 	if (j != (*g)->map->height)
 		return ((int)freedie(g, "Bad map info (unexpected height)"));
 	return (1);
+}
+
+int		*read_piece(t_game **g)
+{
+	size_t	i;
+	size_t	j;
+	char	*line;
+
+	j = 0;
+	if (!(ft_get_next_line(STDIN_FILENO, &line)))
+		return ((int)freedie(g, "Bad piece info (no piece input)"));
+	if (!get_map_info(*g, line))
+		return ((int)freedie(g, "Bad piece info (couldn't get piece info)"));
 }
