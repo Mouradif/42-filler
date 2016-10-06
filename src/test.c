@@ -6,7 +6,7 @@
 /*   By: mkejji <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/06 16:47:52 by mkejji            #+#    #+#             */
-/*   Updated: 2016/10/06 16:47:53 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/10/06 17:37:32 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,25 @@ void	print_map(t_game *g)
 {
 	size_t	j;
 
-	j = 0;
 	ft_putstr("Player : ");
 	ft_putchar(g->player);
 	ft_putchar('\n');
-	while (j < g->map->height)
+	if (g->map != NULL)
 	{
-		ft_putendl(g->map->grid[j]);
-		j++;
+		j = 0;
+		while (j < g->map->height)
+		{
+			ft_putendl(g->map->grid[j]);
+			j++;
+		}
+	}
+	if (g->piece != NULL)
+	{
+		j = 0;
+		while (j < g->piece->height)
+		{
+			ft_putendl(g->piece->grid[j]);
+			j++;
+		}
 	}
 }

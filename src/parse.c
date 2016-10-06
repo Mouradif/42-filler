@@ -6,7 +6,7 @@
 /*   By: mkejji <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/06 14:56:54 by mkejji            #+#    #+#             */
-/*   Updated: 2016/10/06 16:59:10 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/10/06 17:59:54 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ t_game	*init(void)
 	if (!get_player_info(g, line))
 		return ((t_game*)freedie(&g, "Bad player info"));
 	ft_strdel(&line);
-	read_map(&g);
 	return (g);
 }
 
@@ -44,10 +43,10 @@ int		read_map(t_game **g)
 	if (!get_map_info(*g, line))
 		return ((int)freedie(g, "Bad map info (couldn't get map info)"));
 	ft_get_next_line(STDIN_FILENO, &line);
-	while ((ft_get_next_line(STDIN_FILENO, &line)) > 0 && j < (*g)->map->height)
+	while (j < (*g)->map->height && (ft_get_next_line(STDIN_FILENO, &line)) > 0)
 	{
 		i = 0;
-		if (!valid_line(*g, &line))
+		if (!valid_map_line(*g, &line))
 			return ((int)freedie(g, "Bad map info (unexpected char/length)"));
 		while (line[i] && i < (*g)->map->width)
 		{
@@ -61,7 +60,7 @@ int		read_map(t_game **g)
 	return (1);
 }
 
-int		*read_piece(t_game **g)
+int		read_piece(t_game **g)
 {
 	size_t	i;
 	size_t	j;
@@ -70,6 +69,21 @@ int		*read_piece(t_game **g)
 	j = 0;
 	if (!(ft_get_next_line(STDIN_FILENO, &line)))
 		return ((int)freedie(g, "Bad piece info (no piece input)"));
-	if (!get_map_info(*g, line))
+	if (!get_piece_info(*g, line))
 		return ((int)freedie(g, "Bad piece info (couldn't get piece info)"));
+	while ((ft_get_next_line(STDIN_FILENO, &line)) > 0 && j < (*g)->piece->height)
+	{
+		i = 0;
+		if (!valid_piece_line(*g, line))
+			return ((int)freedie(g, "Bad piece info (unexpected char/length)"));
+		while (line[i] && i < (*g)->piece->width)
+		{
+			(*g)->piece->grid[j][i] = line[i];
+			i++;
+		}
+		j++;
+	}
+	if (j != (*g)->piece->height)
+		return ((int)freedie(g, "Bad map info (unexpected height)"));
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mkejji <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 19:36:30 by mkejji            #+#    #+#             */
-/*   Updated: 2016/10/06 16:24:50 by mkejji           ###   ########.fr       */
+/*   Updated: 2016/10/06 17:38:18 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ int	main(void)
 
 	g = init();
 	if (g == NULL)
+		return (1);
+	if (!read_map(&g))
+		return (1);
+	if (!read_piece(&g))
 		return (1);
 	print_map(g);
 	return (0);
