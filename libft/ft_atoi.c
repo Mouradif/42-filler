@@ -56,5 +56,6 @@ int				ft_atoi(const char *s)
 		n += (str[i] - 48) * ft_pow(10, digits - i - 1);
 		i++;
 	}
+	free(str);
 	return (n * sign);
 }

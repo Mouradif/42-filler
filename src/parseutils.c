@@ -18,6 +18,7 @@
 int	get_player_info(t_game *g, char *line)
 {
 	char	**words;
+	int		w;
 
 	if (ft_strlen(line) < 12 || ft_countwords(line, ' ') < 3)
 		return (0);
@@ -30,7 +31,11 @@ int	get_player_info(t_game *g, char *line)
 		return (0);
 	if (words[2][1] != '1' && words[2][1] != '2')
 		return (0);
-	g->player = (words[2][1] == '1') ? 'o' : 'x';
+	g->player = (words[2][1] == '1') ? 'O' : 'X';
+	w = 0;
+	while (words[w])
+		free(words[w++]);
+	free(words);
 	return (1);
 }
 
@@ -50,6 +55,10 @@ int	get_map_info(t_game *g, char *line)
 	if (w == 0 || h == 0)
 		return (0);
 	g->map = newmap(w, h);
+	w = 0;
+	while (words[w])
+		free(words[w++]);
+	free(words);
 	return (1);
 }
 
@@ -69,6 +78,10 @@ int	get_piece_info(t_game *g, char *line)
 	if (w == 0 || h == 0)
 		return (0);
 	g->piece = newmap(w, h);
+	w = 0;
+	while (words[w])
+		free(words[w++]);
+	free(words);
 	return (1);
 }
 

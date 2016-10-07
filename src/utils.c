@@ -23,6 +23,7 @@ void	*freemap(t_map **m)
 	j = 0;
 	while (j < (*m)->height)
 		free((*m)->grid[j++]);
+	free((*m)->grid);
 	free(*m);
 	return (*m = NULL);
 }
@@ -33,6 +34,8 @@ void	*freegame(t_game **g)
 		return (NULL);
 	if ((*g)->map != NULL)
 		freemap(&((*g)->map));
+	if ((*g)->piece != NULL)
+		freemap(&((*g)->piece));
 	free(*g);
 	return (*g = NULL);
 }

@@ -24,8 +24,8 @@ char	**ft_strsplit(const char *s, char c)
 	tab = NULL;
 	i = 0;
 	d = 0;
-	if (!s || !(tab = (char **)malloc((ft_countwords(s, c) + 1) *
-					sizeof(char*))))
+	tab = (char **)malloc((ft_countwords(s, c) + 1) * sizeof(char*));
+	if (!s || !tab)
 		return (NULL);
 	while (s[i] != '\0')
 	{

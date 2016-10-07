@@ -25,11 +25,13 @@ CFLAGS = -Wall -Wextra -Werror
 CC = gcc
 
 all: libft
-	$(CC) -Iinc -Llibft -lft $(CFLAGS) $(SRC) -o $(NAME)
+	$(CC) $(CFLAGS) -Iinc -Llibft -lft $(SRC) -o $(NAME)
 
 termux: libft
 	$(CC) $(CFLAGS) -Iinc $(SRC) libft/libft.a -o $(NAME)
 
+debug: libft
+	$(CC) -g $(CFLAGS) -Iinc -Llibft -lft $(SRC) -o $(NAME)_debug
 libft:
 	make -C libft
 

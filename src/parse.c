@@ -42,7 +42,9 @@ int		read_map(t_game **g)
 		return ((int)freedie(g, "Bad map info (no map input)"));
 	if (!get_map_info(*g, line))
 		return ((int)freedie(g, "Bad map info (couldn't get map info)"));
+	ft_strdel(&line);
 	ft_get_next_line(0, &line);
+	ft_strdel(&line);
 	while (j < (*g)->map->height && (ft_get_next_line(0, &line)) > 0)
 	{
 		i = 0;
@@ -54,6 +56,7 @@ int		read_map(t_game **g)
 			i++;
 		}
 		j++;
+		ft_strdel(&line);
 	}
 	if (j != (*g)->map->height)
 		return ((int)freedie(g, "Bad map info (unexpected height)"));
@@ -71,6 +74,7 @@ int		read_piece(t_game **g)
 		return ((int)freedie(g, "Bad piece info (no piece input)"));
 	if (!get_piece_info(*g, line))
 		return ((int)freedie(g, "Bad piece info (couldn't get piece info)"));
+	ft_strdel(&line);
 	while ((ft_get_next_line(0, &line)) > 0 && j < (*g)->piece->height)
 	{
 		i = 0;
@@ -82,6 +86,7 @@ int		read_piece(t_game **g)
 			i++;
 		}
 		j++;
+		ft_strdel(&line);
 	}
 	if (j != (*g)->piece->height)
 		return ((int)freedie(g, "Bad map info (unexpected height)"));

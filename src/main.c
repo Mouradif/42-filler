@@ -27,6 +27,7 @@ int	main(void)
 		return (1);
 	if (!read_piece(&g))
 		return (1);
+	print_map(g);
 	print_best_move(g);
 	freegame(&g);
 	return (0);
