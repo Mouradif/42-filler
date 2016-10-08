@@ -19,13 +19,16 @@ int		test_spot(t_game *g, size_t i, size_t j)
 
 	sect = 0;
 	y = 0;
-	while (y < g->piece->height && y + j < g->map->height)
+	while (y < g->piece->height)
 	{
 		x = 0;
-		while (x < g->piece->width && x + i < g->map->width)
+		while (x < g->piece->width)
 		{
-			if (g->piece->grid[y][x] == '*' &&
-				ft_isalpha(g->map->grid[j + y][i + x]))
+			if (g->piece->grid[y][x] == '*' && (y + j) >= g->map->width)
+				return (2);
+			if ((g->piece->grid[y][x] == '*') && (x + i) >= g->map->width)
+				return (2);
+			if ((g->piece->grid[y][x] == '*') && ft_isalpha(g->map->grid[j + y][i + x]))
 				sect += (g->map->grid[j + y][i + x] == g->player) ? 1 : 2;
 			x++;
 		}
@@ -43,6 +46,7 @@ int		print_best_move(t_game *g)
 {
 	size_t	i;
 	size_t	j;
+	int		spot;
 
 	if (g->map == NULL && g->piece == NULL)
 		return (1);
@@ -52,7 +56,8 @@ int		print_best_move(t_game *g)
 		i = 0;
 		while (i < g->map->width)
 		{
-			if (test_spot(g, i, j))
+			spot = test_spot(g, i, j);
+			if (spot == 1)
 				return (1);
 			i++;
 		}
