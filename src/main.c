@@ -22,13 +22,35 @@ int	main(void)
 
 	g = init();
 	if (g == NULL)
+	{
+		puts("ERR game");
 		return (1);
+	}
 	if (!read_map(&g))
-		return (1);
+	{
+			puts("ERR map");
+			return (1);
+	}
 	if (!read_piece(&g))
-		return (1);
-	print_map(g);
-	print_best_move(g);
+	{
+			puts("ERR piece");
+			return (1);
+	}
+	while (print_best_move(g))
+	{
+		freemap(&(g->piece));
+		freemap(&(g->map));
+		if (!read_map(&g))
+		{
+			puts("ERR map");
+			return (1);
+		}
+		if (!read_piece(&g))
+		{
+			puts("ERR piece");
+			return (1);
+		}
+	}
 	freegame(&g);
 	return (0);
 }

@@ -75,7 +75,7 @@ int		read_piece(t_game **g)
 	if (!get_piece_info(*g, line))
 		return ((int)freedie(g, "Bad piece info (couldn't get piece info)"));
 	ft_strdel(&line);
-	while ((ft_get_next_line(0, &line)) > 0 && j < (*g)->piece->height)
+	while (j < (*g)->piece->height && (ft_get_next_line(0, &line)) > 0)
 	{
 		i = 0;
 		if (!valid_piece_line(*g, line))
