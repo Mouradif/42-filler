@@ -24,12 +24,12 @@ int		test_spot(t_game *g, size_t i, size_t j)
 		x = 0;
 		while (x < g->piece->width)
 		{
-			if (g->piece->grid[y][x] == '*' && (y + j) >= g->map->width)
-				return (2);
-			if ((g->piece->grid[y][x] == '*') && (x + i) >= g->map->width)
-				return (2);
-			if ((g->piece->grid[y][x] == '*') && ft_isalpha(g->map->grid[j + y][i + x]))
-				sect += (g->map->grid[j + y][i + x] == g->player) ? 1 : 2;
+			if ((g->piece->grid[y][x] == '*' && (y + j) >= g->map->height) || ((g->piece->grid[y][x] == '*') && (x + i) >= g->map->width))
+				return (0);
+			if ((g->piece->grid[y][x] == '*') && (j + y < g->map->height) && (i + x < g->map->width) && ft_isalpha(g->map->grid[j + y][i + x]))
+				sect += (ft_toupper(g->map->grid[j + y][i + x]) == g->player) ? 1 : 2;
+			if (sect > 1)
+				return (0);
 			x++;
 		}
 		y++;
