@@ -52,7 +52,7 @@ int	get_map_info(t_game *g, char *line)
 		return (0);
 	h = ft_atoi(words[1]);
 	w = ft_atoi(words[2]);
-	if (w == 0 || h == 0)
+	if (w <= 0 || h <= 0)
 		return (0);
 	g->map = newmap(w, h);
 	w = 0;
