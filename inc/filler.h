@@ -21,12 +21,20 @@ typedef struct	s_map
 	char	**grid;
 }				t_map;
 
+typedef struct	s_move
+{
+	size_t			i;
+	size_t			j;
+	size_t			score;
+}				t_move;
+
 typedef struct	s_game
 {
 	char	player;
 	size_t	turn;
 	t_map	*map;
 	t_map	*piece;
+	t_move	move;
 }				t_game;
 
 t_game			*init(void);
@@ -37,6 +45,7 @@ int				get_map_info(t_game *g, char *line);
 int				get_piece_info(t_game *g, char *line);
 t_game			*newgame(void);
 t_map			*newmap(int w, int h);
+t_move			newmove(size_t i, size_t j, size_t score);
 void			*freedie(t_game **g, char *err);
 void			print_map(t_game *g);
 int				valid_map_line(t_game *g, char **line);

@@ -24,18 +24,17 @@ int	main(void)
 	if (g == NULL)
 		return (1);
 	if (!read_map(&g))
-			return (1);
+			return ((int)freegame(&g));
 	if (!read_piece(&g))
-			return (1);
+			return ((int)freegame(&g));
 	while (print_best_move(g))
 	{
 		freemap(&(g->piece));
 		freemap(&(g->map));
 		if (!read_map(&g))
-			return (1);
+			return ((int)freegame(&g));
 		if (!read_piece(&g))
-			return (1);
+			return ((int)freegame(&g));
 	}
-	freegame(&g);
-	return (0);
+	return ((int)freegame(&g));
 }

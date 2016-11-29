@@ -14,6 +14,16 @@
 #include "libft.h"
 #include <stdlib.h>
 
+t_move	newmove(size_t i, size_t j, size_t score)
+{
+	t_move	move;
+
+	move.i = i;
+	move.j = j;
+	move.score = score;
+	return (move);
+}
+
 t_game	*newgame(void)
 {
 	t_game	*g;
@@ -23,6 +33,7 @@ t_game	*newgame(void)
 	g->turn = 0;
 	g->map = NULL;
 	g->piece = NULL;
+	g->move = newmove(0, 0, 0);
 	return (g);
 }
 

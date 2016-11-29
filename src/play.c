@@ -11,6 +11,28 @@ void	print_spot(size_t i, size_t j)
 	ft_putchar('\n');
 }
 
+size_t	get_move_score(t_game *g, size_t i, size_t j)
+{
+	if (g == NULL)
+		return (0);
+	i = j;
+	j = i;
+	return (1);
+}
+
+void	compare_add_move(t_game *g, size_t i, size_t j)
+{
+	size_t	score;
+
+	score = get_move_score(g, i, j);
+	if (score >= g->move.score)
+	{
+		g->move.i = i;
+		g->move.j = j;
+		g->move.score = score;
+	}
+}
+
 int		test_spot(t_game *g, size_t i, size_t j)
 {
 	size_t	sect;
@@ -35,10 +57,7 @@ int		test_spot(t_game *g, size_t i, size_t j)
 		y++;
 	}
 	if (sect == 1)
-	{
-		print_spot(i, j);
-		return (1);
-	}
+		compare_add_move(g, i, j);
 	return (0);
 }
 
@@ -48,6 +67,9 @@ int		print_best_move(t_game *g)
 	size_t	j;
 	int		spot;
 
+	g->move.i = 0;
+	g->move.j = 0;
+	g->move.score = 0;
 	if (g->map == NULL && g->piece == NULL)
 		return (1);
 	j = 0;
@@ -57,11 +79,10 @@ int		print_best_move(t_game *g)
 		while (i < g->map->width)
 		{
 			spot = test_spot(g, i, j);
-			if (spot == 1)
-				return (1);
 			i++;
 		}
 		j++;
 	}
-	return (0);
+	print_spot(g->move.i, g->move.j);
+	return (g->move.score);
 }
