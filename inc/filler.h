@@ -23,9 +23,9 @@ typedef struct	s_map
 
 typedef struct	s_move
 {
-	size_t			i;
-	size_t			j;
-	size_t			score;
+	size_t	i;
+	size_t	j;
+	int		score;
 }				t_move;
 
 typedef struct	s_game
